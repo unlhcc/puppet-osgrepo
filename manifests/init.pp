@@ -9,7 +9,6 @@ class osgrepo (
     $osgrepo_enabled            = $osgrepo::params::osgrepo_enabled,
     $osgrepo_failovermethod     = $osgrepo::params::osgrepo_failovermethod,
     $osgrepo_gpgcheck           = $osgrepo::params::osgrepo_gpgcheck,
-    $osgrepo_gpgkey             = $osgrepo::params::osgrepo_gpgkey,
     $osgrepo_mirrorlist         = $osgrepo::params::osgrepo_mirrorlist,
     $osgrepo_priority           = $osgrepo::params::osgrepo_priority,
 
@@ -17,7 +16,6 @@ class osgrepo (
     $osgrepo_testing_enabled        = $osgrepo::params::osgrepo_testing_enabled,
     $osgrepo_testing_failovermethod = $osgrepo::params::osgrepo_testing_failovermethod,
     $osgrepo_testing_gpgcheck       = $osgrepo::params::osgrepo_testing_gpgcheck,
-    $osgrepo_testing_gpgkey         = $osgrepo::params::osgrepo_testing_gpgkey,
     $osgrepo_testing_mirrorlist     = $osgrepo::params::osgrepo_testing_mirrorlist,
     $osgrepo_testing_priority       = $osgrepo::params::osgrepo_testing_priority,
 
@@ -25,7 +23,6 @@ class osgrepo (
     $osgrepo_development_enabled        = $osgrepo::params::osgrepo_development_enabled,
     $osgrepo_development_failovermethod = $osgrepo::params::osgrepo_development_failovermethod,
     $osgrepo_development_gpgcheck       = $osgrepo::params::osgrepo_development_gpgcheck,
-    $osgrepo_development_gpgkey         = $osgrepo::params::osgrepo_development_gpgkey,
     $osgrepo_development_mirrorlist     = $osgrepo::params::osgrepo_development_mirrorlist,
     $osgrepo_development_priority       = $osgrepo::params::osgrepo_development_priority,
 ) inherits osgrepo::params {
@@ -38,7 +35,6 @@ class osgrepo (
             enabled         => $osgrepo_enabled,
             failovermethod  => $osgrepo_failovermethod,
             gpgcheck        => $osgrepo_gpgcheck,
-            gpgkey          => $osgrepo_gpgkey,
             mirrorlist      => $osgrepo_mirrorlist,
             priority        => $osgrepo_priority,
         }
@@ -49,7 +45,6 @@ class osgrepo (
             enabled         => $osgrepo_testing_enabled,
             failovermethod  => $osgrepo_testing_failovermethod,
             gpgcheck        => $osgrepo_testing_gpgcheck,
-            gpgkey          => $osgrepo_testing_gpgkey,
             mirrorlist      => $osgrepo_testing_mirrorlist,
             priority        => $osgrepo_testing_priority,
         }
@@ -60,7 +55,6 @@ class osgrepo (
             enabled         => $osgrepo_development_enabled,
             failovermethod  => $osgrepo_development_failovermethod,
             gpgcheck        => $osgrepo_development_gpgcheck,
-            gpgkey          => $osgrepo_development_gpgkey,
             mirrorlist      => $osgrepo_development_mirrorlist,
             priority        => $osgrepo_development_priority,
         }
@@ -75,7 +69,7 @@ class osgrepo (
 
         osgrepo::rpm_gpg_key { 'OSG':
             path    => '/etc/pki/rpm-gpg/RPM-GPG-KEY-OSG',
-            before  => Yumrepo[ 'osg', 'osg-testing', 'osg-development', ],
+            before  => Yumrepo[ 'osg', 'osg-testing', 'osg-development' ],
         }
 
     } else {
