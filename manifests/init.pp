@@ -37,6 +37,10 @@ class osgrepo (
     $osgrepo_development_priority       = $osgrepo::params::osgrepo_development_priority,
 ) inherits osgrepo::params {
 
+  yumrepo { 'osg-3.2-el6-release':
+    enabled         => 0,
+  }
+
     if $::osfamily == 'RedHat' and $::operatingsystem !~ /Fedora|Amazon/ {
 
       yumrepo { 'osg':
