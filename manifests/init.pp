@@ -35,6 +35,13 @@ class osgrepo (
     $osgrepo_development_gpgcheck       = $osgrepo::params::osgrepo_development_gpgcheck,
     $osgrepo_development_mirrorlist     = $osgrepo::params::osgrepo_development_mirrorlist,
     $osgrepo_development_priority       = $osgrepo::params::osgrepo_development_priority,
+
+    #$osgrepo_upcoming_baseurl        = $osgrepo::params::osgrepo_upcoming_baseurl,
+    $osgrepo_upcoming_enabled        = $osgrepo::params::osgrepo_upcoming_enabled,
+    $osgrepo_upcoming_failovermethod = $osgrepo::params::osgrepo_upcoming_failovermethod,
+    $osgrepo_upcoming_gpgcheck       = $osgrepo::params::osgrepo_upcoming_gpgcheck,
+    $osgrepo_upcoming_mirrorlist     = $osgrepo::params::osgrepo_upcoming_mirrorlist,
+    $osgrepo_upcoming_priority       = $osgrepo::params::osgrepo_upcoming_priority,
 ) inherits osgrepo::params {
 
     if $::osfamily == 'RedHat' and $::operatingsystem !~ /Fedora|Amazon/ {
@@ -77,6 +84,16 @@ class osgrepo (
             gpgcheck       => $osgrepo_development_gpgcheck,
             mirrorlist     => $osgrepo_development_mirrorlist,
             priority       => $osgrepo_development_priority,
+        }
+
+        yumrepo { 'osg-upcoming':
+            descr          => "OSG Software for Enterprise Linux ${::os_maj_version} - Upcoming - \$basearch",
+            baseurl        => $osgrepo_upcoming_baseurl,
+            enabled        => $osgrepo_upcoming_enabled,
+            failovermethod => $osgrepo_upcoming_failovermethod,
+            gpgcheck       => $osgrepo_upcoming_gpgcheck,
+            mirrorlist     => $osgrepo_upcoming_mirrorlist,
+            priority       => $osgrepo_upcoming_priority,
         }
 
         file { '/etc/pki/rpm-gpg/RPM-GPG-KEY-OSG':

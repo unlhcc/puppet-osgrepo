@@ -37,4 +37,11 @@ class osgrepo::params {
   $osgrepo_development_mirrorlist = "http://repo.grid.iu.edu/mirror/osg/${osg_version}/el${::os_maj_version}/development/\$basearch"
   $osgrepo_development_priority = '98'
 
+  #$osgrepo_upcoming_baseurl = "http://repo.grid.iu.edu/osg/upcoming/el${::os_maj_version}/release/\$basearch"
+  $osgrepo_upcoming_enabled = '0'
+  $osgrepo_upcoming_failovermethod = 'priority'
+  $osgrepo_upcoming_gpgcheck = '1'
+  $osgrepo_upcoming_mirrorlist = "http://repo.grid.iu.edu/mirror/osg/upcoming/el${::os_maj_version}/release/\$basearch"
+  $osgrepo_upcoming_priority = '98'
+
 }
