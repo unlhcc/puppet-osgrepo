@@ -4,39 +4,38 @@
 # Sets up OSG Software for Enterprise Linux repos
 #
 class osgrepo (
-
     $os_maj_release             = $osgrepo::params::os_maj_release,
     $osg_version                = $osgrepo::params::osg_version,
 
-    #$osgrepo_baseurl            = $osgrepo::params::osgrepo_baseurl,
+    $osgrepo_baseurl            = $osgrepo::params::osgrepo_baseurl,
     $osgrepo_enabled            = $osgrepo::params::osgrepo_enabled,
     $osgrepo_failovermethod     = $osgrepo::params::osgrepo_failovermethod,
     $osgrepo_gpgcheck           = $osgrepo::params::osgrepo_gpgcheck,
     $osgrepo_mirrorlist         = $osgrepo::params::osgrepo_mirrorlist,
     $osgrepo_priority           = $osgrepo::params::osgrepo_priority,
 
-    #$osgrepo_contrib_baseurl        = $osgrepo::params::osgrepo_contrib_baseurl,
+    $osgrepo_contrib_baseurl        = $osgrepo::params::osgrepo_contrib_baseurl,
     $osgrepo_contrib_enabled        = $osgrepo::params::osgrepo_contrib_enabled,
     $osgrepo_contrib_failovermethod = $osgrepo::params::osgrepo_contrib_failovermethod,
     $osgrepo_contrib_gpgcheck       = $osgrepo::params::osgrepo_contrib_gpgcheck,
     $osgrepo_contrib_mirrorlist     = $osgrepo::params::osgrepo_contrib_mirrorlist,
     $osgrepo_contrib_priority       = $osgrepo::params::osgrepo_contrib_priority,
 
-    #$osgrepo_testing_baseurl        = $osgrepo::params::osgrepo_testing_baseurl,
+    $osgrepo_testing_baseurl        = $osgrepo::params::osgrepo_testing_baseurl,
     $osgrepo_testing_enabled        = $osgrepo::params::osgrepo_testing_enabled,
     $osgrepo_testing_failovermethod = $osgrepo::params::osgrepo_testing_failovermethod,
     $osgrepo_testing_gpgcheck       = $osgrepo::params::osgrepo_testing_gpgcheck,
     $osgrepo_testing_mirrorlist     = $osgrepo::params::osgrepo_testing_mirrorlist,
     $osgrepo_testing_priority       = $osgrepo::params::osgrepo_testing_priority,
 
-    #$osgrepo_development_baseurl        = $osgrepo::params::osgrepo_development_baseurl,
+    $osgrepo_development_baseurl        = $osgrepo::params::osgrepo_development_baseurl,
     $osgrepo_development_enabled        = $osgrepo::params::osgrepo_development_enabled,
     $osgrepo_development_failovermethod = $osgrepo::params::osgrepo_development_failovermethod,
     $osgrepo_development_gpgcheck       = $osgrepo::params::osgrepo_development_gpgcheck,
     $osgrepo_development_mirrorlist     = $osgrepo::params::osgrepo_development_mirrorlist,
     $osgrepo_development_priority       = $osgrepo::params::osgrepo_development_priority,
 
-    #$osgrepo_upcoming_baseurl        = $osgrepo::params::osgrepo_upcoming_baseurl,
+    $osgrepo_upcoming_baseurl        = $osgrepo::params::osgrepo_upcoming_baseurl,
     $osgrepo_upcoming_enabled        = $osgrepo::params::osgrepo_upcoming_enabled,
     $osgrepo_upcoming_failovermethod = $osgrepo::params::osgrepo_upcoming_failovermethod,
     $osgrepo_upcoming_gpgcheck       = $osgrepo::params::osgrepo_upcoming_gpgcheck,
