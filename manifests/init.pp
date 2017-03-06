@@ -41,6 +41,20 @@ class osgrepo (
     $osgrepo_upcoming_gpgcheck       = $osgrepo::params::osgrepo_upcoming_gpgcheck,
     $osgrepo_upcoming_mirrorlist     = $osgrepo::params::osgrepo_upcoming_mirrorlist,
     $osgrepo_upcoming_priority       = $osgrepo::params::osgrepo_upcoming_priority,
+
+    $osgrepo_upcoming_testing_baseurl        = $osgrepo::params::osgrepo_upcoming_testing_baseurl,
+    $osgrepo_upcoming_testing_enabled        = $osgrepo::params::osgrepo_upcoming_testing_enabled,
+    $osgrepo_upcoming_testing_failovermethod = $osgrepo::params::osgrepo_upcoming_testing_failovermethod,
+    $osgrepo_upcoming_testing_gpgcheck       = $osgrepo::params::osgrepo_upcoming_testing_gpgcheck,
+    $osgrepo_upcoming_testing_mirrorlist     = $osgrepo::params::osgrepo_upcoming_testing_mirrorlist,
+    $osgrepo_upcoming_testing_priority       = $osgrepo::params::osgrepo_upcoming_testing_priority,
+
+    $osgrepo_upcoming_development_baseurl        = $osgrepo::params::osgrepo_upcoming_development_baseurl,
+    $osgrepo_upcoming_development_enabled        = $osgrepo::params::osgrepo_upcoming_development_enabled,
+    $osgrepo_upcoming_development_failovermethod = $osgrepo::params::osgrepo_upcoming_development_failovermethod,
+    $osgrepo_upcoming_development_gpgcheck       = $osgrepo::params::osgrepo_upcoming_development_gpgcheck,
+    $osgrepo_upcoming_development_mirrorlist     = $osgrepo::params::osgrepo_upcoming_development_mirrorlist,
+    $osgrepo_upcoming_development_priority       = $osgrepo::params::osgrepo_upcoming_development_priority,
 ) inherits osgrepo::params {
 
     if $::osfamily == 'RedHat' and $::operatingsystem !~ /Fedora|Amazon/ {
@@ -93,6 +107,26 @@ class osgrepo (
             gpgcheck       => $osgrepo_upcoming_gpgcheck,
             mirrorlist     => $osgrepo_upcoming_mirrorlist,
             priority       => $osgrepo_upcoming_priority,
+        }
+
+        yumrepo { 'osg-upcoming-testing':
+            descr          => "OSG Software for Enterprise Linux ${::os_maj_version} - Upcoming - Testing - \$basearch",
+            baseurl        => $osgrepo_upcoming_testing_baseurl,
+            enabled        => $osgrepo_upcoming_testing_enabled,
+            failovermethod => $osgrepo_upcoming_testing_failovermethod,
+            gpgcheck       => $osgrepo_upcoming_testing_gpgcheck,
+            mirrorlist     => $osgrepo_upcoming_testing_mirrorlist,
+            priority       => $osgrepo_upcoming_testing_priority,
+        }
+
+        yumrepo { 'osg-upcoming-development':
+            descr          => "OSG Software for Enterprise Linux ${::os_maj_version} - Upcoming - Development - \$basearch",
+            baseurl        => $osgrepo_upcoming_development_baseurl,
+            enabled        => $osgrepo_upcoming_development_enabled,
+            failovermethod => $osgrepo_upcoming_development_failovermethod,
+            gpgcheck       => $osgrepo_upcoming_development_gpgcheck,
+            mirrorlist     => $osgrepo_upcoming_development_mirrorlist,
+            priority       => $osgrepo_upcoming_development_priority,
         }
 
         file { '/etc/pki/rpm-gpg/RPM-GPG-KEY-OSG':

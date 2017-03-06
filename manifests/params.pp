@@ -48,4 +48,18 @@ class osgrepo::params {
     $osgrepo_upcoming_mirrorlist = "http://repo.grid.iu.edu/mirror/osg/upcoming/el${::os_maj_version}/release/\$basearch"
     $osgrepo_upcoming_priority = '98'
 
+    $osgrepo_upcoming_testing_baseurl = absent
+    $osgrepo_upcoming_testing_enabled = '0'
+    $osgrepo_upcoming_testing_failovermethod = 'priority'
+    $osgrepo_upcoming_testing_gpgcheck = '1'
+    $osgrepo_upcoming_testing_mirrorlist = "http://repo.grid.iu.edu/mirror/osg/upcoming/el${::os_maj_version}/testing/\$basearch"
+    $osgrepo_upcoming_testing_priority = '98'
+
+    $osgrepo_upcoming_development_baseurl = absent
+    $osgrepo_upcoming_development_enabled = '0'
+    $osgrepo_upcoming_development_failovermethod = 'priority'
+    $osgrepo_upcoming_development_gpgcheck = '1'
+    $osgrepo_upcoming_development_mirrorlist = "http://repo.grid.iu.edu/mirror/osg/upcoming/el${::os_maj_version}/development/\$basearch"
+    $osgrepo_upcoming_development_priority = '98'
+
 }
