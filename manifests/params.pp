@@ -11,7 +11,7 @@ class osgrepo::params {
         $os_maj_release = $os_versions[0]
     }
 
-    $osg_version = lookup('osgrepo::osg_version', String, 'first', '3.4')
+    $osg_version = lookup('osgrepo::osg_version', String, 'first', '3.5')
 
     $osgrepo_baseurl = absent
     $osgrepo_enabled = '1'
