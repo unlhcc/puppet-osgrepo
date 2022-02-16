@@ -142,6 +142,19 @@ class osgrepo (
             before => Yumrepo[ 'osg', 'osg-testing', 'osg-development' ],
         }
 
+        file { '/etc/pki/rpm-gpg/RPM-GPG-KEY-OSG-2':
+            ensure => present,
+            owner  => 'root',
+            group  => 'root',
+            mode   => '0644',
+            source => 'puppet:///modules/osgrepo/RPM-GPG-KEY-OSG-2',
+        }
+
+        osgrepo::rpm_gpg_key { 'OSG-2':
+            path   => '/etc/pki/rpm-gpg/RPM-GPG-KEY-OSG-2',
+            before => Yumrepo[ 'osg', 'osg-testing', 'osg-development' ],
+        }
+
     } else {
         notice ("No OSG repo available for ${::operatingsystem}")
     }
