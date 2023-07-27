@@ -18,7 +18,7 @@ class osgrepo::params {
         $failovermethod = 'priority'
     }
 
-    $osg_version = lookup('osgrepo::osg_version', String, 'first', '3.5')
+    $osg_version = lookup('osgrepo::osg_version', String, 'first', '3.6')
 
     $osgrepo_baseurl = absent
     $osgrepo_enabled = '1'
