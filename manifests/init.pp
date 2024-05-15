@@ -129,30 +129,41 @@ class osgrepo (
             priority       => $osgrepo_upcoming_development_priority,
         }
 
-        file { '/etc/pki/rpm-gpg/RPM-GPG-KEY-OSG':
-            ensure => present,
-            owner  => 'root',
-            group  => 'root',
-            mode   => '0644',
-            source => 'puppet:///modules/osgrepo/RPM-GPG-KEY-OSG',
-        }
-
-        osgrepo::rpm_gpg_key { 'OSG':
-            path   => '/etc/pki/rpm-gpg/RPM-GPG-KEY-OSG',
-            before => Yumrepo[ 'osg', 'osg-testing', 'osg-development' ],
-        }
-
-        file { '/etc/pki/rpm-gpg/RPM-GPG-KEY-OSG-2':
-            ensure => present,
-            owner  => 'root',
-            group  => 'root',
-            mode   => '0644',
-            source => 'puppet:///modules/osgrepo/RPM-GPG-KEY-OSG-2',
-        }
-
-        osgrepo::rpm_gpg_key { 'OSG-2':
-            path   => '/etc/pki/rpm-gpg/RPM-GPG-KEY-OSG-2',
-            before => Yumrepo[ 'osg', 'osg-testing', 'osg-development' ],
+        if Float($osg_version) < 23 {
+            file { '/etc/pki/rpm-gpg/RPM-GPG-KEY-OSG-2':
+                ensure => present,
+                owner  => 'root',
+                group  => 'root',
+                mode   => '0644',
+                source => 'puppet:///modules/osgrepo/RPM-GPG-KEY-OSG-2',
+            }
+            osgrepo::rpm_gpg_key { 'OSG':
+                path   => '/etc/pki/rpm-gpg/RPM-GPG-KEY-OSG-2',
+                before => Yumrepo[ 'osg', 'osg-testing', 'osg-development' ],
+            }
+        } else {
+            file { "/etc/pki/rpm-gpg/RPM-GPG-KEY-OSG-${osg_version}-auto":
+                ensure => present,
+                owner  => 'root',
+                group  => 'root',
+                mode   => '0644',
+                source => "puppet:///modules/osgrepo/RPM-GPG-KEY-OSG-${osg_version}-auto",
+            }
+            osgrepo::rpm_gpg_key { 'OSG-auto':
+                path   => "/etc/pki/rpm-gpg/RPM-GPG-KEY-OSG-${osg_version}-auto",
+                before => Yumrepo[ 'osg', 'osg-testing', 'osg-development' ],
+            }
+            file { "/etc/pki/rpm-gpg/RPM-GPG-KEY-OSG-${osg_version}-developer":
+                ensure => present,
+                owner  => 'root',
+                group  => 'root',
+                mode   => '0644',
+                source => "puppet:///modules/osgrepo/RPM-GPG-KEY-OSG-${osg_version}-developer",
+            }
+            osgrepo::rpm_gpg_key { 'OSG-developer':
+                path   => "/etc/pki/rpm-gpg/RPM-GPG-KEY-OSG-${osg_version}-developer",
+                before => Yumrepo[ 'osg', 'osg-testing', 'osg-development' ],
+            }
         }
 
     } else {
