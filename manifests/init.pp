@@ -60,7 +60,7 @@ class osgrepo (
     if $::osfamily == 'RedHat' and $::operatingsystem !~ /Fedora|Amazon/ {
 
       yumrepo { 'osg':
-            descr          => "OSG Software for Enterprise Linux ${::os_maj_version} - \$basearch",
+            descr          => "OSG Software for Enterprise Linux ${os_maj_release} - \$basearch",
             baseurl        => $osgrepo_baseurl,
             enabled        => $osgrepo_enabled,
             failovermethod => $osgrepo_failovermethod,
@@ -70,7 +70,7 @@ class osgrepo (
         }
 
         yumrepo { 'osg-contrib':
-            descr          => "OSG Software for Enterprise Linux ${::os_maj_version} - Contributed - \$basearch",
+            descr          => "OSG Software for Enterprise Linux ${os_maj_release} - Contributed - \$basearch",
             baseurl        => $osgrepo_contrib_baseurl,
             enabled        => $osgrepo_contrib_enabled,
             failovermethod => $osgrepo_contrib_failovermethod,
@@ -80,7 +80,7 @@ class osgrepo (
         }
 
         yumrepo { 'osg-testing':
-            descr          => "OSG Software for Enterprise Linux ${::os_maj_version} - Testing - \$basearch",
+            descr          => "OSG Software for Enterprise Linux ${os_maj_release} - Testing - \$basearch",
             baseurl        => $osgrepo_testing_baseurl,
             enabled        => $osgrepo_testing_enabled,
             failovermethod => $osgrepo_testing_failovermethod,
@@ -90,7 +90,7 @@ class osgrepo (
         }
 
         yumrepo { 'osg-development':
-            descr          => "OSG Software for Enterprise Linux ${::os_maj_version} - Development - \$basearch",
+            descr          => "OSG Software for Enterprise Linux ${os_maj_release} - Development - \$basearch",
             baseurl        => $osgrepo_development_baseurl,
             enabled        => $osgrepo_development_enabled,
             failovermethod => $osgrepo_development_failovermethod,
@@ -100,7 +100,7 @@ class osgrepo (
         }
 
         yumrepo { 'osg-upcoming':
-            descr          => "OSG Software for Enterprise Linux ${::os_maj_version} - Upcoming - \$basearch",
+            descr          => "OSG Software for Enterprise Linux ${os_maj_release} - Upcoming - \$basearch",
             baseurl        => $osgrepo_upcoming_baseurl,
             enabled        => $osgrepo_upcoming_enabled,
             failovermethod => $osgrepo_upcoming_failovermethod,
@@ -110,7 +110,7 @@ class osgrepo (
         }
 
         yumrepo { 'osg-upcoming-testing':
-            descr          => "OSG Software for Enterprise Linux ${::os_maj_version} - Upcoming - Testing - \$basearch",
+            descr          => "OSG Software for Enterprise Linux ${os_maj_release} - Upcoming - Testing - \$basearch",
             baseurl        => $osgrepo_upcoming_testing_baseurl,
             enabled        => $osgrepo_upcoming_testing_enabled,
             failovermethod => $osgrepo_upcoming_testing_failovermethod,
@@ -120,7 +120,7 @@ class osgrepo (
         }
 
         yumrepo { 'osg-upcoming-development':
-            descr          => "OSG Software for Enterprise Linux ${::os_maj_version} - Upcoming - Development - \$basearch",
+            descr          => "OSG Software for Enterprise Linux ${os_maj_release} - Upcoming - Development - \$basearch",
             baseurl        => $osgrepo_upcoming_development_baseurl,
             enabled        => $osgrepo_upcoming_development_enabled,
             failovermethod => $osgrepo_upcoming_development_failovermethod,
